@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  password  String
+  name      String?
+  role      String    @default("user")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  projects  Project[]
+}
+
+model Project {
+  id               String    @id @default(cuid())
+  productDescription Json
+  pages            Json
+  options          Json
+  status           String    @default("active")
+  userId           String
+  user             User      @relation(fields: [userId], references: [id])
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  abTests          ABTest[]
+  analytics        Analytics[]
+  deployments      Deployment[]
+}
+
+model ABTest {
+  id        String    @id @default(cuid())
+  projectId String
+  project   Project   @relation(fields: [projectId], references: [id])
+  variants  Json
+  metrics   Json
+  status    String    @default("active")
+  winner    String?
+  startDate DateTime  @default(now())
+  endDate   DateTime?
+  events    ABTestEvent[]
+}
+
+model ABTestEvent {
+  id        String   @id @default(cuid())  testId    String
+  test      ABTest   @relation(fields: [testId], references: [id])
+  variantId String
+  eventType String
+  metric    String?
+  timestamp DateTime @default(now())
+}
+
+model Analytics {
+  id        String   @id @default(cuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+  event     String
+  page      String
+  visitor   String
+  metadata  Json?
+  timestamp DateTime @default(now())
+  
+  @@index([projectId, timestamp])
+}
+
+model Deployment {
+  id         String   @id @default(cuid())
+  projectId  String
+  project    Project  @relation(fields: [projectId], references: [id])
+  target     String
+  url        String?
+  status     String   @default("pending")
+  error      String?
+  createdAt  DateTime @default(now())
+  completedAt DateTime?
+}
