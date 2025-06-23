@@ -47,6 +47,7 @@ export class AIService {
   private hashPrompt(prompt: string): string {
     return Buffer.from(prompt).toString('base64').substring(0, 16);
   }
+
   /**
    * Generate content using Anthropic Claude
    */
@@ -103,6 +104,7 @@ export class AIService {
     
     return await this.generateContent(prompt, 'json');
   }
+
   /**
    * Generate hero section content
    */
@@ -164,6 +166,7 @@ export class AIService {
 
     return await this.generateContent(enhancedPrompt, 'json');
   }
+
   /**
    * Generate benefits section
    */
@@ -221,6 +224,7 @@ export class AIService {
     - primaryButton: Main button text
     - secondaryButton: Optional secondary action`, 'json');
   }
+
   /**
    * Generate FAQ section
    */
@@ -238,4 +242,4 @@ export class AIService {
 
     return await this.generateContent(enhancedPrompt, 'json');
   }
-}  // CRITICAL: This closing brace closes the AIService class
+}
