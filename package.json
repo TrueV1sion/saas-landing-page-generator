@@ -20,7 +20,11 @@
     "cli": "tsx cli.ts",
     "quickstart": "tsx quickstart.ts",
     "saas-gen": "tsx cli.ts",
-    "deploy-github": "tsx deploy-github.ts"
+    "deploy-github": "tsx deploy-github.ts",
+    "vercel-build": "prisma generate && npm run build",
+    "check-deploy": "node check-vercel.js",
+    "prebuild": "rimraf dist",
+    "postinstall": "prisma generate"
   },
   "keywords": [
     "saas",

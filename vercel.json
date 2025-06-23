@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "name": "saas-landing-page-generator",
+  "builds": [
+    {
+      "src": "dist/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/dist/index.js"
+    },
+    {
+      "src": "/health",
+      "dest": "/dist/index.js"
+    },
+    {
+      "src": "/preview/(.*)",
+      "dest": "/generated/preview/$1"
+    },
+    {
+      "src": "/live/(.*)",
+      "dest": "/generated/live/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/index.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "buildCommand": "npm run build && npm run db:generate",
+  "outputDirectory": ".",
+  "installCommand": "npm install && npx prisma generate",
+  "framework": null,
+  "functions": {
+    "dist/index.js": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  },
+  "regions": ["iad1"],
+  "crons": []
+}
