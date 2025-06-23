@@ -127,7 +127,22 @@ export class AIService {
     - ctaText: Primary call-to-action button text (max 4 words)
     - ctaSecondary: Optional secondary CTA text (max 4 words)`;
 
-    const result = await this.generateContent(enhancedPrompt, 'json');
+    const result = await this.generateContent(enhancedPrompt, 'json') as {
+      headline: string;
+      subheadline: string;
+      ctaText: string;
+      ctaSecondary?: string;
+    };
+    
+    // Ensure required fields are present
+    if (!result.headline || !result.subheadline || !result.ctaText) {
+      return {
+        headline: 'Transform Your Business Today',
+        subheadline: 'Powerful SaaS solution that drives growth and innovation',
+        ctaText: 'Get Started',
+        ctaSecondary: 'Learn More'
+      };
+    }
     await cache.set(cacheKey, result, 3600);
     return result;
   }

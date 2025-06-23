@@ -34,7 +34,7 @@
   },
   "buildCommand": "npm run build && npm run db:generate",
   "outputDirectory": ".",
-  "installCommand": "npm install && npx prisma generate",
+  "installCommand": "npm install",
   "framework": null,
   "functions": {
     "dist/index.js": {

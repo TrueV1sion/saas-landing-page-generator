@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "ESNext",
+    "module": "commonjs",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -24,8 +24,18 @@
       "@templates/*": ["src/templates/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"]
-    }
+    },
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "tests"]
+  "exclude": ["node_modules", "dist", "tests"],
+  "ts-node": {
+    "esm": true
+  }
 }
