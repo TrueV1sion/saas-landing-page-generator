@@ -106,6 +106,7 @@ export class AIService {
     
     return await this.generateContent(prompt, 'json');
   }
+
   /**
    * Generate hero section content
    */
