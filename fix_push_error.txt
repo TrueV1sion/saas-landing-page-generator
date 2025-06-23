@@ -1,0 +1,27 @@
+From https://github.com/TrueV1sion/saas-landing-page-generator
+ * branch            main       -> FETCH_HEAD
+   3dba440..eb90589  main       -> origin/main
+fatal: refusing to merge unrelated histories
+fatal: pathspec 'src/api/index.ts' did not match any files
+fatal: pathspec 'src/middleware/index.ts' did not match any files
+fatal: pathspec 'src/services/index.ts' did not match any files
+fatal: pathspec 'src/utils/index.ts' did not match any files
+'-' is not recognized as an internal or external command,
+operable program or batch file.
+'-' is not recognized as an internal or external command,
+operable program or batch file.
+'-' is not recognized as an internal or external command,
+operable program or batch file.
+'-' is not recognized as an internal or external command,
+operable program or batch file.
+'-' is not recognized as an internal or external command,
+operable program or batch file.
+'-' is not recognized as an internal or external command,
+operable program or batch file.
+To https://github.com/TrueV1sion/saas-landing-page-generator.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/TrueV1sion/saas-landing-page-generator.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
