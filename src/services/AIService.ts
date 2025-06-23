@@ -47,7 +47,7 @@ export class AIService {
   private hashPrompt(prompt: string): string {
     return Buffer.from(prompt).toString('base64').substring(0, 16);
   }
-}
+
   /**
    * Generate content using Anthropic Claude
    */
@@ -57,7 +57,7 @@ export class AIService {
       : 'You are an expert copywriter for SaaS landing pages.';
 
     const response = await this.anthropic.messages.create({
-      model: 'claude-opus-4-20250514',
+      model: 'claude-3-opus-20240229',
       max_tokens: 1000,
       temperature: 0.7,
       system: systemPrompt,
@@ -144,6 +144,7 @@ export class AIService {
         ctaSecondary: 'Learn More'
       };
     }
+    
     await cache.set(cacheKey, result, 3600);
     return result;
   }
@@ -167,6 +168,7 @@ export class AIService {
 
     return await this.generateContent(enhancedPrompt, 'json');
   }
+
   /**
    * Generate benefits section
    */
@@ -224,6 +226,7 @@ export class AIService {
     - primaryButton: Main button text
     - secondaryButton: Optional secondary action`, 'json');
   }
+
   /**
    * Generate FAQ section
    */
